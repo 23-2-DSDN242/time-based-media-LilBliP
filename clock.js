@@ -11,18 +11,19 @@ function draw_clock(obj) {
   //        < 0 if no alarm is set
   //        = 0 if the alarm is currently going off
   //        > 0 --> the number of seconds until alarm should go off
+  translate(width/2, height/2)
   background(50); //  beige
   fill(200); // dark grey
   textSize(40);
   textAlign(CENTER, CENTER);
-  text("YOUR MAIN CLOCK CODE GOES HERE", width / 2, 200);
+
 
 
   fill(249, 140, 255);// pink
-  ellipse(width / 3, 350, 150);
+  ellipse(-170, 0, 100);
   fill(140, 255, 251) // blue
-  ellipse(width / 2, 350, 150);
+  ellipse(-45, 0, 150);
   fill(175, 133, 255); // purple
-  ellipse(width / 3 * 2, 350, 150);
+  ellipse(150, 50, 250);
 
 }

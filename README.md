@@ -3,3 +3,4 @@
 ### THIS IS YOUR README
 
 Update this file as you go along to record your progress.
+// 5/03/24 created maede clock and created initial picture with steam punk gear idea
