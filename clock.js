@@ -16,14 +16,24 @@ function draw_clock(obj) {
   fill(200); // dark grey
   textSize(40);
   textAlign(CENTER, CENTER);
-
+angleMode(DEGREES)
 
 
   fill(249, 140, 255);// pink
-  ellipse(-170, 0, 100);
+  ellipse(-125, 0, 100);
+
+push()
+rotate(360 / 60 * obj.seconds)
   fill(140, 255, 251) // blue
-  ellipse(-45, 0, 150);
+  ellipse(0, 0, 150);
+
+  for(let i = 0; i < 9; i++) {
+   rotate(360/9)
+    ellipse(0,75,20);
+  }
+pop()
+
   fill(175, 133, 255); // purple
-  ellipse(150, 50, 250);
+  ellipse(195, 50, 250);
 
 }
