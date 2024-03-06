@@ -23,7 +23,7 @@ angleMode(DEGREES)
   ellipse(-125, 0, 100);
 
 push()
-rotate(360 / 60 * obj.seconds)
+rotate(360 / 60 * obj.minutes)
   fill(140, 255, 251) // blue
   ellipse(0, 0, 150);
 
@@ -37,3 +37,5 @@ pop()
   ellipse(195, 50, 250);
 
 }
+
+//function draw_gear(x,y,t,)
