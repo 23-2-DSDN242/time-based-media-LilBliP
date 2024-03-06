@@ -18,7 +18,7 @@ let seconds = obj.seconds;
 let millis = obj.millis;
 let alarm = obj.seconds_until_alarm;
 
-let secondgearrot = seconds + (millis / 1000.0);
+let secondgearrot = seconds + (millis / 1000.0);//le bug code
 let minutegearrot = minutes + ((seconds + millis/1000)/60)
 
 
@@ -34,7 +34,7 @@ angleMode(DEGREES)
   ellipse(-125, 0, 100);
 
 push()
-rotate(360 / secondgearrot)
+rotate(360 / secondgearrot) //le bug code
   fill(140, 255, 251) // blue
   ellipse(0, 0, 150);
 
