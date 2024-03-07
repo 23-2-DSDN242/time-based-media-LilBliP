@@ -3,14 +3,19 @@
  */
 function draw_gear(x,y,t,ts,rot) {//t=teeth num ts=teethsize rot=rotationspeed
   let s = ts*5 //s=ellispe diameter
-  rotate(360*rot)
-  for(let i = 0; i < t; i++) {
+
+  translate(x,y)
+  rotate(360*rot)//gear rotate
+  for(let i = 0; i < t; i++) {//teeth forloop
     rotate(360/t)
      ellipse(0,s/2,ts);
    }
-   ellipse(x,y,s)
+   ellipse(0,0,s)
    fill(255)
-  ellipse(x,s/2,ts);//testing white ellipse
+  ellipse(0,s/2,ts);//testing white ellipse
+
+
+  
 
 }
 
@@ -33,10 +38,11 @@ let alarm = obj.seconds_until_alarm;
 let secondgearrot = seconds + (millis / 1000.0);
 let minutegearrot = minutes + (secondgearrot/60)
 
-  translate(width/2, height/2)
+ // translate(width/2, height/2)
   background(50); //  beige
   fill(200); // dark grey
   textSize(40);
+  noStroke()
   textAlign(CENTER, CENTER);
 angleMode(DEGREES)
 
@@ -57,7 +63,7 @@ angleMode(DEGREES)
 //   ellipse(0,75,20);
 // pop()
 
-draw_gear(0,0,10,30,minutegearrot)
+draw_gear(400,300,10,30,minutegearrot)
 //   fill(175, 133, 255); // purple
 //   ellipse(195, 50, 250);
 
