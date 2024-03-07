@@ -1,6 +1,17 @@
 /*
  * use p5.js to draw a clock on a 960x500 canvas
  */
+function draw_gear(x,y,t,ts,rot) {//t=teeth num ts=teethsize rot=rotationspeed
+  let s = ts*5 //s=ellispe diameter
+  for(let i = 0; i < t; i++) {
+    rotate(360/t)
+     ellipse(0,s/2,ts);
+   }
+   ellipse(x,y,s)
+   fill(255)
+  ellipse(x,s/2,ts);//testing white ellipse
+  rotate(360*rot)
+}
 
 function draw_clock(obj) {
   // draw your own clock here based on the values of obj:
@@ -18,9 +29,8 @@ let seconds = obj.seconds;
 let millis = obj.millis;
 let alarm = obj.seconds_until_alarm;
 
-let secondgearrot = seconds + (millis / 1000.0);//le bug code
-let minutegearrot = minutes + ((seconds + millis/1000)/60)
-
+let secondgearrot = seconds + (millis / 1000.0);
+let minutegearrot = minutes + (secondgearrot/60)
 
   translate(width/2, height/2)
   background(50); //  beige
@@ -30,25 +40,26 @@ let minutegearrot = minutes + ((seconds + millis/1000)/60)
 angleMode(DEGREES)
 
 
-  fill(249, 140, 255);// pink
-  ellipse(-125, 0, 100);
+//   fill(249, 140, 255);// pink
+//   ellipse(-125, 0, 100);
 
-push()
-rotate(360 / secondgearrot) //le bug code
-  fill(140, 255, 251) // blue
-  ellipse(0, 0, 150);
+// push()
+// rotate(360*minutegearrot) 
+//   fill(140, 255, 251) // blue
+//   ellipse(0, 0, 150);
 
-  for(let i = 0; i < 9; i++) {
-   rotate(360/9)
-    ellipse(0,75,20);
-  }
-  fill(255)
-  ellipse(0,75,20);
-pop()
+//   for(let i = 0; i < 9; i++) {
+//    rotate(360/9)
+//     ellipse(0,75,30);
+//   }
+//   fill(255)
+//   ellipse(0,75,20);
+// pop()
 
-  fill(175, 133, 255); // purple
-  ellipse(195, 50, 250);
+draw_gear(0,0,10,30,5)
+//   fill(175, 133, 255); // purple
+//   ellipse(195, 50, 250);
 
 }
 
-//function draw_gear(x,y,t,)
+
