@@ -3,6 +3,7 @@
  */
 function draw_gear(x,y,t,ts,rot) {//t=teeth num ts=teethsize rot=rotationspeed
   let s = ts*5 //s=ellispe diameter
+  rotate(360*rot)
   for(let i = 0; i < t; i++) {
     rotate(360/t)
      ellipse(0,s/2,ts);
@@ -10,7 +11,7 @@ function draw_gear(x,y,t,ts,rot) {//t=teeth num ts=teethsize rot=rotationspeed
    ellipse(x,y,s)
    fill(255)
   ellipse(x,s/2,ts);//testing white ellipse
-  rotate(360*rot)
+
 }
 
 function draw_clock(obj) {
@@ -56,7 +57,7 @@ angleMode(DEGREES)
 //   ellipse(0,75,20);
 // pop()
 
-draw_gear(0,0,10,30,5)
+draw_gear(0,0,10,30,minutegearrot)
 //   fill(175, 133, 255); // purple
 //   ellipse(195, 50, 250);
 
