@@ -1,14 +1,15 @@
 /*
  * use p5.js to draw a clock on a 960x500 canvas
  */
-function draw_gear(x,y,t,ts,rot,trimc,bodyc) {//t=teeth num ts=teethsize rot=rotationspeed
+function draw_gear(x,y,t,ts,rot,trimc,bodyc,tl) {//t=teeth num ts=teethsize rot=rotationspeed trimc=trimcolour bodyc=body colour tl=teeth length 1-1.5 for best relsults
   let s = ts*5 //s=ellispe diameter
 let trim = ts/3
   translate(x,y)
   rotate(360*rot)//gear rotate
+  fill(trimc)
   for(let i = 0; i < t; i++) {//teeth forloop
     rotate(360/t)
-     ellipse(0,s/2,ts);
+     ellipse(0,s/2,ts,ts*tl);
    }
    strokeWeight(trim)
    stroke(trimc)//trim colour
@@ -23,12 +24,19 @@ let trim = ts/3
 
    noStroke()
    fill(255,255,255,255)
-  ellipse(0,s/2,ts);//testing white ellipse
+  ellipse(0,s/2,ts,ts*tl);//testing white ellipse
+}
 
-
-  
+function radialGradient(sX, sY, sR, eX, eY, eR, colorS, colorE) {
+  let gradient = drawingContext.createRadialGradient(
+    sX, sY, sR, eX, eY, eR
+  );
+  gradient.addColorStop(0, colorS);
+  gradient.addColorStop(1, colorE);
+  drawingContext.fillStyle = gradient;
 
 }
+
 //232, 171, 28 trim colour
 // 59, 53, 49 body colour
 function draw_clock(obj) {
@@ -41,7 +49,7 @@ function draw_clock(obj) {
   //        < 0 if no alarm is set
   //        = 0 if the alarm is currently going off
   //        > 0 --> the number of seconds until alarm should go off
-let brown = color(59, 53, 49)
+let brown = color(46, 26, 11)
 let gold = color(232, 171, 28)
   let hours = obj.hours;
 let minutes = obj.minutes;
@@ -76,11 +84,12 @@ angleMode(DEGREES)
 //   fill(255)
 //   ellipse(0,75,20);
 // pop()
-
-draw_gear(400,300,10,30,minutegearrot,gold,brown)
+push()
+draw_gear(400,300,10,30,minutegearrot,gold,brown,1.5)
+pop()
 //   fill(175, 133, 255); // purple
 //   ellipse(195, 50, 250);
-
+draw_gear(560,220,10,30,-minutegearrot,gold,brown,1.5)
 }
 
 
