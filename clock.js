@@ -4,6 +4,7 @@
 function draw_gear(x,y,t,ts,rot,trimc,bodyc,tl) {//t=teeth num ts=teethsize rot=rotationspeed trimc=trimcolour bodyc=body colour tl=teeth length 1-1.5 for best relsults
   let s = ts*5 //s=ellispe diameter
 let trim = ts/3
+push()
   translate(x,y)
   rotate(360*rot)//gear rotate
   fill(trimc)
@@ -25,6 +26,7 @@ let trim = ts/3
    noStroke()
    fill(255,255,255,255)
   ellipse(0,s/2,ts,ts*tl);//testing white ellipse
+  pop()
 }
 
 function radialGradient(sX, sY, sR, eX, eY, eR, colorS, colorE) {
@@ -84,9 +86,9 @@ angleMode(DEGREES)
 //   fill(255)
 //   ellipse(0,75,20);
 // pop()
-push()
+
 draw_gear(400,300,10,30,minutegearrot,gold,brown,1.5)
-pop()
+
 //   fill(175, 133, 255); // purple
 //   ellipse(195, 50, 250);
 draw_gear(560,220,10,30,-minutegearrot,gold,brown,1.5)
