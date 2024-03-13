@@ -2,23 +2,25 @@
  * use p5.js to draw a clock on a 960x500 canvas
  */
 function draw_gear(x,y,t,ts,rot,trimc,bodyc,tl) {//t=teeth num ts=teethsize rot=rotationspeed trimc=trimcolour bodyc=body colour tl=teeth length 1-1.5 for best relsults
-  let s = ts*5 //s=ellispe diameter
+  let s = ts*(t/2) //s=ellispe diameter
 let trim = ts/3
 push()
   translate(x,y)
   rotate(360*rot)//gear rotate
-  fill(trimc)
+    fill(trimc)
   for(let i = 0; i < t; i++) {//teeth forloop
     rotate(360/t)
      ellipse(0,s/2,ts,ts*tl);
    }
    strokeWeight(trim)
-   stroke(trimc)//trim colour
+    stroke(trimc)//trim colou
    fill(0,0,0,0)
    ellipse(0,0,s) //trims
    ellipse(0,0,s-trim*4)
    strokeWeight(trim*2)
-   stroke(bodyc) //body colour
+   
+    stroke(bodyc) //body colour
+   
    ellipse(0,0,s-trim*2)//body
 
 
@@ -36,6 +38,10 @@ function radialGradient(sX, sY, sR, eX, eY, eR, colorS, colorE) {
   gradient.addColorStop(0, colorS);
   gradient.addColorStop(1, colorE);
   drawingContext.fillStyle = gradient;
+
+}
+
+function gradient_gear(x,y,t,ts,rot,colourS,colourE,tl){
 
 }
 
@@ -59,6 +65,7 @@ let seconds = obj.seconds;
 let millis = obj.millis;
 let alarm = obj.seconds_until_alarm;
 
+let milligearrot = millis
 let secondgearrot = seconds + (millis / 1000.0);
 let minutegearrot = minutes + (secondgearrot/60)
 
@@ -86,12 +93,28 @@ angleMode(DEGREES)
 //   fill(255)
 //   ellipse(0,75,20);
 // pop()
+//   fill(175, 133, 255); // purple
+//   ellipse(195, 50, 250);
+draw_gear(200,300,3,10,secondgearrot,gold,brown,1.5)
+draw_gear(292,295,30,10,-minutegearrot*6,gold,brown,1.5)
+
+draw_gear(350,145,30,10,minutegearrot*6,gold,brown,1.5)
+draw_gear(350,145,3,10,minutegearrot*6,gold,brown,1.5)
+
+
+draw_gear(342,207,18,10,-minutegearrot,gold,brown,1.5)
+draw_gear(342,207,18,10,-minutegearrot,gold,brown,1.5)
+
+
+draw_gear(200,300,10,25,secondgearrot,gold,brown,1.5)
 
 draw_gear(400,300,10,30,minutegearrot,gold,brown,1.5)
 
-//   fill(175, 133, 255); // purple
-//   ellipse(195, 50, 250);
-draw_gear(560,220,10,30,-minutegearrot,gold,brown,1.5)
+
+
+
+
+
 }
 
 
