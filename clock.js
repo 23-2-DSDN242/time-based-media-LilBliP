@@ -1,7 +1,7 @@
 /*
  * use p5.js to draw a clock on a 960x500 canvas
  */
-function draw_gear(x,y,t,ts,rot,trimc,bodyc,tl) {//t=teeth num ts=teethsize rot=rotationspeed trimc=trimcolour bodyc=body colour tl=teeth length 1-1.5 for best relsults
+function draw_gear(x,y,t,ts,rot,trimc,bodyc,tl,test) {//t=teeth num ts=teethsize rot=rotationspeed trimc=trimcolour bodyc=body colour tl=teeth length 1-1.5 for best relsults
   let s = ts*(t/2) //s=ellispe diameter
 let trim = ts/3
 push()
@@ -23,11 +23,11 @@ push()
    
    ellipse(0,0,s-trim*2)//body
 
-
-
-   noStroke()
-   fill(255,255,255,255)
-  ellipse(0,s/2,ts,ts*tl);//testing white ellipse
+if(test>0) {
+  noStroke()
+  fill(255,255,255,255)
+ ellipse(0,s/2,ts,ts*tl);//testing white ellipse
+}
   pop()
 }
 
@@ -95,22 +95,27 @@ angleMode(DEGREES)
 // pop()
 //   fill(175, 133, 255); // purple
 //   ellipse(195, 50, 250);
-draw_gear(200,300,3,10,secondgearrot,gold,brown,1.5)
-draw_gear(292,295,30,10,-minutegearrot*6,gold,brown,1.5)
+draw_gear(150,300,3,10,secondgearrot,gold,brown,1.5)
 
-draw_gear(350,145,30,10,minutegearrot*6,gold,brown,1.5)
-draw_gear(350,145,3,10,minutegearrot*6,gold,brown,1.5)
+draw_gear(242,295,30,10,-minutegearrot*6,gold,brown,1.5)
 
 
-draw_gear(342,207,18,10,-minutegearrot,gold,brown,1.5)
-draw_gear(342,207,18,10,-minutegearrot,gold,brown,1.5)
+draw_gear(300,145,30,10,minutegearrot*6,gold,brown,1.5)
+draw_gear(300,145,3,10,minutegearrot*6,gold,brown,1.5)
 
+//draw_gear(242,295,5,10,-minutegearrot*6,gold,brown,1.5)
 
-draw_gear(200,300,10,25,secondgearrot,gold,brown,1.5)
+draw_gear(327,201,18,10,-minutegearrot,gold,brown,1.5)
 
-draw_gear(400,300,10,30,minutegearrot,gold,brown,1.5)
+draw_gear(327,201,8,10,-minutegearrot,gold,brown,1.5)
+draw_gear(337,248,8,10,minutegearrot,gold,brown,1.5)
 
+//train wheel linkage maybe line with ends defined by rotaions?
 
+draw_gear(337,248,10,30,minutegearrot,gold,brown,1.5,1)
+draw_gear(150,300,10,25,secondgearrot,gold,brown,1.5,1)
+
+//draw_gear(384,215,10,30,minutegearrot,gold,brown,1.5)
 
 
 
