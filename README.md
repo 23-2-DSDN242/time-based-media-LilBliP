@@ -9,3 +9,4 @@ Update this file as you go along to record your progress.
 // 10/03/24 began creating additional ability for gears to have gradient colour
 //14/03/24 abandoned gradient colour gears in favour of pursuing a simplified steampunk asthetic
 //19/03/24 made testing ellipse actually toggleable on draw_gear. completed minute gear finally and mechanism between second gear and minute gear
+//19/03/24 added unique gear colours to existing primary gears eg second minute. added hour gear and mechanism. chose colours primaryily based on steam punk colour palete eg copper brass silver etc 
