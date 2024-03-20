@@ -36,7 +36,7 @@ push()
 
 if(test>0) {
   noStroke()
-  fill(255,255,255,255)
+  fill(255,255,255)
  ellipse(0,-s/2,ts,ts*tl);//testing white ellipse
 }
   pop()
@@ -66,11 +66,15 @@ let brown = color(46, 26, 11)
 let redbrown = color(86, 36, 21)
 let gold = color(232, 171, 28)
 let gold2 = color(190,100,10)
+let gold3 = color(160,100,10)
+let maroon =color	(110,47,59)
 let oxycopper = color(52, 163, 115)
 let copper = color(207, 72, 27)
 let silver = color(173, 166, 149)
-let forgeGlowS = color(207,72,27,50)
-let forgeGlowE = color(207,72,27,10)
+let forgeGlowS = color(255, 171, 58,60)
+let forgeGlowE = color(207,72,27,15)
+let nightvinetteE = color(100,250,255,120)
+let nightvinetteS = color(0,0,0,0)
 
   let hours = obj.hours;
 let minutes = obj.minutes;
@@ -82,6 +86,8 @@ let secondgearrot = seconds + (millis / 1000.0);
 let minutegearrot = minutes + (secondgearrot/60)
 let hoursgearrot = hours + (minutegearrot/60)
 
+let glowflicker = map(millis,0,999,width/2,width/3)
+let glowflicker2 = map(millis,0,999,width/4,width/3)
 let speedup = 1
 
 if(alarm < 0){
@@ -107,23 +113,22 @@ draw_gear(100,300,3,10,(secondgearrot)*speedup,oxycopper,brown,1.5)
 draw_gear(192,295,30,10,(-minutegearrot*6)*speedup,gold,brown,1.5,0,1)
 
 
-draw_gear(250,145,30,10,(minutegearrot*6)*speedup,gold,brown,1.5,0,1)
-draw_gear(250,145,3,10,(minutegearrot*6)*speedup,gold2,brown,1.5)
+draw_gear(250,145,30,10,(minutegearrot*6)*speedup,gold3,brown,1.5,0,1)
+draw_gear(250,145,3,10,(minutegearrot*6)*speedup,gold3,brown,1.5)
 
 
 
-draw_gear(277,201,18,10,(-minutegearrot)*speedup,gold2,brown,1.5)
+draw_gear(277,201,18,10,(-minutegearrot)*speedup,gold,brown,1.5)
+draw_gear(277,201,6,10,(-minutegearrot)*speedup,gold,brown,1.5)
 
-draw_gear(277,201,6,10,(-minutegearrot)*speedup,gold2,brown,1.5)
 draw_gear(287,238,6,10,(minutegearrot)*speedup,copper,brown,1.5)
 
-
-draw_gear(461,238,60,10,(-minutegearrot/10)*speedup,gold,brown,1.5,0,1)
-draw_gear(461,238,3,10,(-minutegearrot/10)*speedup,gold,brown,1.5)
+draw_gear(461,238,60,10,(-minutegearrot/10)*speedup,gold3,brown,1.5,0,1)
+draw_gear(461,238,3,10,(-minutegearrot/10)*speedup,gold3,brown,1.5)
 
 draw_gear(480,179,18,10,(hoursgearrot)*speedup,silver,brown,1.5,0,1)
 
-draw_gear(470,299,18,10,(hoursgearrot)*speedup,gold,brown,1.5,0,1)
+draw_gear(470,299,18,10,(hoursgearrot)*speedup,gold2,brown,1.5,0,1)
 draw_gear(470,299,3,10,(hoursgearrot)*speedup,gold2,brown,1.5,0,1)
 
 draw_gear(542,380,36,10,(-hoursgearrot/12)*speedup,gold,brown,1.5,0,1)
@@ -132,21 +137,32 @@ draw_gear(542,380,36,10,(-hoursgearrot/12)*speedup,gold,brown,1.5,0,1)
 draw_gear(718,306,36,10,(hoursgearrot/12)*speedup,gold,brown,1.5,0,1)
 draw_gear(718,306,6,15,(hoursgearrot/12)*speedup,gold,brown,1.5,0,1)
 
-draw_gear(648,346,12,15,(hoursgearrot/12)*speedup,gold2,brown,1.5,0,1)
+draw_gear(648,346,12,15,(hoursgearrot/12)*speedup,maroon,brown,1.5,0,1)
 
 
 draw_gear(287,238,10,30,(minutegearrot)*speedup,copper,brown,1.5,1)//1 rotation per minute (use to find seconds)
 draw_gear(100,300,10,25,(secondgearrot)*speedup,oxycopper,brown,1.5,1)//1 rotation per second (use to find milliseconds)
 draw_gear(480,179,12,28,(hoursgearrot)*speedup,silver,brown,1.5,1)//1 rotation her hour(use to find minutes)
-draw_gear(648,346,12,30,(hoursgearrot/24)*speedup,gold2,brown,1.5,1)//1 rotation per day
+draw_gear(648,346,12,30,(hoursgearrot/24)*speedup,maroon,brown,1.5,1)//1 rotation per day
 
 if(hours > 8 && hours < 18){
   push()
   ellipseMode(RADIUS)
- radialGradient(width/2,height,10,width/2,height,width+100,forgeGlowS,forgeGlowE)
-
+ radialGradient(width/2,height,1,width/2,height,glowflicker,forgeGlowS,forgeGlowE)
+rect(width/2,height/2,width,height)
+ pop()
+ push()
+  ellipseMode(RADIUS)
+ radialGradient(width/2,height,1,width/2,height,glowflicker2,forgeGlowS,forgeGlowE)
+rect(width/2,height/2,width,height)
+ pop()
+} else {
+  push()
+  ellipseMode(RADIUS)
+ radialGradient(width/2,height/2,100,width/2,height,width,nightvinetteS,nightvinetteE)
+rect(width/2,height/2,width,height)
+ pop()
 }
-
 }
 
 
