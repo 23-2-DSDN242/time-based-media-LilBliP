@@ -41,6 +41,15 @@ if(test>0) {
 }
   pop()
 }
+function radialGradient(sX, sY, sR, eX, eY, eR, colorS, colorE) {
+  let gradient = drawingContext.createRadialGradient(
+    sX, sY, sR, eX, eY, eR
+  );
+  gradient.addColorStop(0, colorS);
+  gradient.addColorStop(1, colorE);
+  drawingContext.fillStyle = gradient;
+
+}
 function draw_clock(obj) {
   // draw your own clock here based on the values of obj:
   //    obj.hours goes from 0-23
@@ -54,12 +63,14 @@ function draw_clock(obj) {
   rectMode(CENTER)
   //colours
 let brown = color(46, 26, 11)
+let redbrown = color(86, 36, 21)
 let gold = color(232, 171, 28)
 let gold2 = color(190,100,10)
 let oxycopper = color(52, 163, 115)
 let copper = color(207, 72, 27)
 let silver = color(173, 166, 149)
-
+let forgeGlowS = color(207,72,27,50)
+let forgeGlowE = color(207,72,27,10)
 
   let hours = obj.hours;
 let minutes = obj.minutes;
@@ -82,11 +93,10 @@ if(alarm > 0){
 if(alarm == 0){
   speedup = 10000
 }
-let glowheight = map(millis,0,999,0,height)-map(seconds,0,59,0,height/2)
  //make a map with seconds_until_alarm
  // translate(width/2, height/2)
-  background(50); //  beige
-  fill(255); // dark grey
+  background(50);
+  fill(255); 
   textSize(40);
   textAlign(CENTER, CENTER);
 angleMode(DEGREES)
@@ -131,9 +141,10 @@ draw_gear(480,179,12,28,(hoursgearrot)*speedup,silver,brown,1.5,1)//1 rotation h
 draw_gear(648,346,12,30,(hoursgearrot/24)*speedup,gold2,brown,1.5,1)//1 rotation per day
 
 if(hours > 8 && hours < 18){
-  noStroke()
-  fill(207,72,27,20)
-rect(width/2,height,width,glowheight)
+  push()
+  ellipseMode(RADIUS)
+ radialGradient(width/2,height,10,width/2,height,width+100,forgeGlowS,forgeGlowE)
+
 }
 
 }
