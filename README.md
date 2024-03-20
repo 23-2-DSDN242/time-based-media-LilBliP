@@ -12,10 +12,9 @@ orange("copper") gear = seconds (1 rotation per minute)
 grey("silver") gear = minutes (1 rotation per hour)
 maroon gear = hours (1 rotation per day)
 
-
-
 CHANGELOG
 // 5/03/24 created maede clock and created initial sketch with gear idea 
+![sketch](readme/<sketch.jpg>)
 // 7/03/24 created first working gear with so called "flick" bug where full rotation would occur once every minute in a sudden motion
 // 7/03/24 created basic gear function for drawing gears complete various bug fixes
 // 10/03/24 began creating additional ability for gears to have gradient colour
