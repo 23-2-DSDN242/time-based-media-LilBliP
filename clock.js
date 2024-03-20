@@ -37,7 +37,7 @@ push()
 if(test>0) {
   noStroke()
   fill(255,255,255,255)
- ellipse(0,s/2,ts,ts*tl);//testing white ellipse
+ ellipse(0,-s/2,ts,ts*tl);//testing white ellipse
 }
   pop()
 }
@@ -52,11 +52,15 @@ function draw_clock(obj) {
   //        = 0 if the alarm is currently going off
   //        > 0 --> the number of seconds until alarm should go off
   rectMode(CENTER)
+  //colours
 let brown = color(46, 26, 11)
 let gold = color(232, 171, 28)
+let gold2 = color(190,100,10)
 let oxycopper = color(52, 163, 115)
 let copper = color(207, 72, 27)
 let silver = color(173, 166, 149)
+
+
   let hours = obj.hours;
 let minutes = obj.minutes;
 let seconds = obj.seconds;
@@ -67,61 +71,70 @@ let secondgearrot = seconds + (millis / 1000.0);
 let minutegearrot = minutes + (secondgearrot/60)
 let hoursgearrot = hours + (minutegearrot/60)
 
+let speedup = 1
+
+if(alarm < 0){
+   speedup = 1
+}
+if(alarm > 0){
+  speedup = map(alarm,15,0,1,10000)
+}
+if(alarm == 0){
+  speedup = 10000
+}
+let glowheight = map(millis,0,999,0,height)-map(seconds,0,59,0,height/2)
+ //make a map with seconds_until_alarm
  // translate(width/2, height/2)
   background(50); //  beige
-  fill(200); // dark grey
+  fill(255); // dark grey
   textSize(40);
-  noStroke()
   textAlign(CENTER, CENTER);
 angleMode(DEGREES)
 
 
-//   fill(249, 140, 255);// pink
-//   ellipse(-125, 0, 100);
+draw_gear(100,300,3,10,(secondgearrot)*speedup,oxycopper,brown,1.5)
 
-// push()
-// rotate(360*minutegearrot) 
-//   fill(140, 255, 251) // blue
-//   ellipse(0, 0, 150);
-
-//   for(let i = 0; i < 9; i++) {
-//    rotate(360/9)
-//     ellipse(0,75,30);
-//   }
-//   fill(255)
-//   ellipse(0,75,20);
-// pop()
-//   fill(175, 133, 255); // purple
-//   ellipse(195, 50, 250);
-draw_gear(100,300,3,10,secondgearrot,oxycopper,brown,1.5)
-
-draw_gear(192,295,30,10,-minutegearrot*6,gold,brown,1.5,0,1)
+draw_gear(192,295,30,10,(-minutegearrot*6)*speedup,gold,brown,1.5,0,1)
 
 
-draw_gear(250,145,30,10,minutegearrot*6,gold,brown,1.5,0,1)
-draw_gear(250,145,3,10,minutegearrot*6,gold,brown,1.5)
+draw_gear(250,145,30,10,(minutegearrot*6)*speedup,gold,brown,1.5,0,1)
+draw_gear(250,145,3,10,(minutegearrot*6)*speedup,gold2,brown,1.5)
 
 
 
-draw_gear(277,201,18,10,-minutegearrot,gold,brown,1.5)
+draw_gear(277,201,18,10,(-minutegearrot)*speedup,gold2,brown,1.5)
 
-draw_gear(277,201,6,10,-minutegearrot,gold,brown,1.5)
-draw_gear(287,238,6,10,minutegearrot,copper,brown,1.5)
-
-
-draw_gear(461,238,60,10,-minutegearrot/10,gold,brown,1.5,0,1)
-draw_gear(461,238,3,10,-minutegearrot/10,gold,brown,1.5)
-
-draw_gear(480,178,18,10,hoursgearrot,silver,brown,1.5,0,1)
+draw_gear(277,201,6,10,(-minutegearrot)*speedup,gold2,brown,1.5)
+draw_gear(287,238,6,10,(minutegearrot)*speedup,copper,brown,1.5)
 
 
-draw_gear(287,238,10,30,minutegearrot,copper,brown,1.5,1)//minutemain
-draw_gear(100,300,10,25,secondgearrot,oxycopper,brown,1.5,1)//secondmain
-draw_gear(480,178,12,28,hoursgearrot,silver,brown,1.5,1)
-//draw_gear(530,278,12,28,hoursgearrot/24,silver,brown,1.5,1)
+draw_gear(461,238,60,10,(-minutegearrot/10)*speedup,gold,brown,1.5,0,1)
+draw_gear(461,238,3,10,(-minutegearrot/10)*speedup,gold,brown,1.5)
+
+draw_gear(480,179,18,10,(hoursgearrot)*speedup,silver,brown,1.5,0,1)
+
+draw_gear(470,299,18,10,(hoursgearrot)*speedup,gold,brown,1.5,0,1)
+draw_gear(470,299,3,10,(hoursgearrot)*speedup,gold2,brown,1.5,0,1)
+
+draw_gear(542,380,36,10,(-hoursgearrot/12)*speedup,gold,brown,1.5,0,1)
 
 
+draw_gear(718,306,36,10,(hoursgearrot/12)*speedup,gold,brown,1.5,0,1)
+draw_gear(718,306,6,15,(hoursgearrot/12)*speedup,gold,brown,1.5,0,1)
 
+draw_gear(648,346,12,15,(hoursgearrot/12)*speedup,gold2,brown,1.5,0,1)
+
+
+draw_gear(287,238,10,30,(minutegearrot)*speedup,copper,brown,1.5,1)//1 rotation per minute (use to find seconds)
+draw_gear(100,300,10,25,(secondgearrot)*speedup,oxycopper,brown,1.5,1)//1 rotation per second (use to find milliseconds)
+draw_gear(480,179,12,28,(hoursgearrot)*speedup,silver,brown,1.5,1)//1 rotation her hour(use to find minutes)
+draw_gear(648,346,12,30,(hoursgearrot/24)*speedup,gold2,brown,1.5,1)//1 rotation per day
+
+if(hours > 8 && hours < 18){
+  noStroke()
+  fill(207,72,27,20)
+rect(width/2,height,width,glowheight)
+}
 
 }
 
