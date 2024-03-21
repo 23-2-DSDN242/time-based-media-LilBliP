@@ -1,11 +1,11 @@
 ## MDDN 242 Project 1: Time-based Media  
 
-### THIS IS YOUR README
 
-Clockwork Workgears
+
+###Clockwork Workgears
 By Lliam Booth
 
-HOW TO READ
+##HOW TO READ
 Each coloured gear displays a certain unit of time through a single rotaion per the unit greater than it eg milliseconds are read using the gear that rotates once per second this tells you both how far through the larger unit you are and the current number of smaller units
 blue-green("oxycopper") gear = millisecond (1 rotation per second)
 orange("copper") gear = seconds (1 rotation per minute)
@@ -16,7 +16,6 @@ I began my initial ideation based first on the sketches put forward by my pers (
 this evolved to have a steampunk asthetic although the more detailed asthetic i was initally wanting proved to be out of scope as several bugs made this impossible to implement in the way i intended forcing me to maintain a simplified asthetic instead (which was far easier to code) ![firstgear](readmeimg/firstgear.jpg)
  from here i created my inital working gears and used this code to create a specialised function to draw the gears (im really glad i did this overwise i would not have finished) math gear ratios and possitioning was the most time consuming part if i had to manually do all of this it would be impossible to finish on time. as i was making the gears i decided on each of their colours sticking to various metal colours to stay within theme whilst adding contrast to the primary gears
  ![gearclourexample](readmeimg/gearcolourexample.jpg)
- 
 CHANGELOG
 // 5/03/24 created maede clock and created an intial sketch idea based on gears
 // 7/03/24 created first working gear with so called "flick" bug where full rotation would occur once every minute in a sudden motion
