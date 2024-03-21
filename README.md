@@ -17,7 +17,7 @@ this evolved to have a steampunk asthetic although the more detailed asthetic i 
 from here i created my inital working gears and used this code to create a specialised function to draw the gears (im really glad i did this overwise i would not have finished) math gear ratios and possitioning was the most time consuming part if i had to manually do all of this it would be impossible to finish on time. as i was making the gears i decided on each of their colours sticking to various metal colours to stay within theme whilst adding contrast to the primary gears
  ![gearclourexample](readmeimg/gearcolourexample.jpg)
 I continued general work until all gears were complete i then began work on creating the alarm and some day/nigh ambiance i also adjusted some of the colours of gears based on feedback and personal preference.
- ![precolourchangegears](readmeimg/precolourchangegears.jpg)
+ ![precolourchangegears](readmeimg/Precolourchangegears.jpg)
   ![prechangeambient](readmeimg/prechangeambient.jpg)
   after this i changed the day ambient to be a vinette to be similar to night and be less disruptive
   ![ambientfinalish](readmeimg/ambientfinalish.jpg)
