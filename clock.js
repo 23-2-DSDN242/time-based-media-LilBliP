@@ -41,7 +41,19 @@ function draw_gear(x, y, t, ts, rot, trimc, bodyc, tl, test, arms) { //t=teeth n
   }
   pop()
 }
+function brick_wall_layer(x,y,l,h,nx,g,c){
 
+  push()
+  rectMode(CENTER)
+  strokeWeight(2)
+  stroke(50,25,25)
+  fill(c)
+    for(let i = 0; i < nx; i++){
+      rect(x,y,l,h)
+      translate(l+g,0)
+    }
+pop()
+}
 function radialGradient(sX, sY, sR, eX, eY, eR, colorS, colorE) {
   let gradient = drawingContext.createRadialGradient(
     sX, sY, sR, eX, eY, eR
@@ -73,8 +85,8 @@ function draw_clock(obj) {
   let oxycopper = color(52, 163, 115)
   let copper = color(207, 72, 27)
   let silver = color(173, 166, 149)
-  let forgeGlowS = color(255, 171, 58, 15)
-  let forgeGlowE = color(207, 72, 27, 60)
+  let forgeGlowS = color(255, 171, 58, 10)
+  let forgeGlowE = color(200, 121, 18, 50)
   let nightvinetteE = color(100, 250, 255, 120)
   let nightvinetteS = color(0, 0, 0, 0)
 
@@ -89,7 +101,6 @@ function draw_clock(obj) {
   let hoursgearrot = hours + (minutegearrot / 60)
 
   let glowflicker = map(millis, 0, 999, width / 2, width / 3)
-  let glowflicker2 = map(millis, 0, 999, width / 4, width / 3)
   
   let speedup = 1//for general gear speedchange
   if (alarm < 0) {
@@ -108,6 +119,23 @@ function draw_clock(obj) {
   textSize(40);
   textAlign(CENTER, CENTER);
   angleMode(DEGREES)
+  //bricks
+  brick_wall_layer(655,-20,100,50,6,8,redbrown)
+  brick_wall_layer(600,40,100,50,6,8,redbrown)
+  brick_wall_layer(655,100,100,50,6,8,redbrown)
+  brick_wall_layer(600,160,100,50,6,8,redbrown)
+  brick_wall_layer(655,220,100,50,6,8,redbrown)
+  brick_wall_layer(600,280,100,50,6,8,redbrown)
+  brick_wall_layer(655,340,100,50,6,8,redbrown)
+  brick_wall_layer(600,400,100,50,6,8,redbrown)
+  brick_wall_layer(655,460,100,50,6,8,redbrown)
+  fill(redbrown)
+  stroke(50,25,25)
+  rect(575,-20,50,50)
+  rect(575,100,50,50)
+  rect(575,220,50,50)
+  rect(575,340,50,50)
+  rect(575,460,50,50)
 //gears sorted by axle numbers/maingears
   //1
   draw_gear(120, 300, 3, 10, (secondgearrot) * speedup, oxycopper, brown, 1.5)
@@ -145,7 +173,7 @@ function draw_clock(obj) {
   if (hours > 8 && hours < 18) { //day ambiance
     push()
     ellipseMode(RADIUS)
-    radialGradient(width / 2, height / 4, 100, width / 2, height, width-glowflicker, forgeGlowS, forgeGlowE)
+    radialGradient(width / 2, height / 4, 70, width / 2, height, width-glowflicker, forgeGlowS, forgeGlowE)
     rect(width / 2, height / 2, width, height)
     pop()
   } else { //night ambiance
